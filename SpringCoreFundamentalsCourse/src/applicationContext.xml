@@ -17,7 +17,7 @@
 	</bean>
 	
 	<bean id="euDateFormat" class="java.text.SimpleDateFormat">
-    	<constructor-arg value=”dd/MM/yyyy” />
+    	<constructor-arg value="dd/MM/yyyy" />
 	</bean>
 	
 </beans>
