@@ -1,5 +1,6 @@
 package blackbelt.springf.main;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,6 +19,10 @@ public class Main {
 		System.out.println("Balance: " + bs.computeBalanceWithInterests(100));
 		
 		System.out.println(bs.getGateway() == ac.getBean("rateExchangeGateway"));
+		
+		BasicDataSource ds = (BasicDataSource)ac.getBean("dataSource");
+		
+		System.out.println(ds.getDriverClassName() + " - " + ds.getUrl());
 		
 	}
 

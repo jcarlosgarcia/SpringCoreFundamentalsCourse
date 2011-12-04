@@ -9,4 +9,15 @@
 
 	<context:component-scan base-package="blackbelt"/>
 	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.postgresql.Driver" />
+		<property name="url" value="jdbc:postgresql://localhost" />
+		<property name="username" value="root" />
+		<property name="password" value="mypetname" />
+	</bean>
+	
+	<bean id="euDateFormat" class="java.text.SimpleDateFormat">
+    	<constructor-arg value=”dd/MM/yyyy” />
+	</bean>
+	
 </beans>
