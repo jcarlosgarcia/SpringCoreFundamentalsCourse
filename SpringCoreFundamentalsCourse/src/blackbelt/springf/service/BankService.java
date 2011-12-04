@@ -9,6 +9,8 @@ public class BankService {
 	@Autowired
 	private RateExchangeGateway reGateway;
 	private double interestRate;
+	@Autowired
+	private PayGateway payGateway;
 	
 	public RateExchangeGateway getGateway() {
 		return reGateway;
@@ -28,6 +30,10 @@ public class BankService {
 	
 	public double computeBalanceWithInterests(double balance) {
 		return balance * (1 + getInterestRate());
+	}
+	
+	public void transferMoney(String bankAccountNbDebit, String bankAccountNbCredit, double amount) {
+		payGateway.performPayment(bankAccountNbDebit, bankAccountNbCredit, amount);
 	}
 	
 }

@@ -20,6 +20,8 @@ public class Main {
 		
 		System.out.println(bs.getGateway() == ac.getBean("rateExchangeGateway"));
 		
+		bs.transferMoney("debitAccount", "creditAccount", 10);
+		
 		BasicDataSource ds = (BasicDataSource)ac.getBean("dataSource");
 		
 		System.out.println(ds.getDriverClassName() + " - " + ds.getUrl());
