@@ -13,18 +13,18 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-		BankService bs = (BankService) ac.getBean("bankService");
-		
-		System.out.println("InterestRate: " + bs.getInterestRate());
-		System.out.println("Balance: " + bs.computeBalanceWithInterests(100));
-		
-		System.out.println(bs.getGateway() == ac.getBean("rateExchangeGateway"));
-		
-		bs.transferMoney("debitAccount", "creditAccount", 10);
 		
 		BasicDataSource ds = (BasicDataSource)ac.getBean("dataSource");
 		
 		System.out.println(ds.getDriverClassName() + " - " + ds.getUrl() + " - " + ds.getUsername() + " - " + ds.getPassword());
+		
+		BankService bs = (BankService) ac.getBean("bankService");
+		
+		System.out.println("InterestRate: " + bs.getInterestRate());
+		System.out.println("Balance: " + bs.computeBalanceWithInterests(100));
+		bs.transferMoney("debitAccount", "creditAccount", 10);
+		bs.computeYearlyInterest("bankAccountNb");
+		System.out.println(bs.getGateway() == ac.getBean("rateExchangeGateway"));
 		
 	}
 

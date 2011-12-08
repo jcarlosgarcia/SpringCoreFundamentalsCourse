@@ -45,7 +45,23 @@ public class BankService {
 	}
 	
 	public void transferMoney(String bankAccountNbDebit, String bankAccountNbCredit, double amount) {
-		payGateway.performPayment(bankAccountNbDebit, bankAccountNbCredit, amount);
+		System.out.println("Transferring money between 2 bank accounts");
+        // Let's take a nap of 2 sec, to simulate a long operation.
+        try {
+            Thread.sleep(2000);
+            payGateway.performPayment(bankAccountNbDebit, bankAccountNbCredit, amount);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } 
 	}
+	
+	public void computeYearlyInterest(String bankAccountNb) {
+        // Let's take a nap of 1 sec, to simulate a long operation.
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } 
+    }
 	
 }
