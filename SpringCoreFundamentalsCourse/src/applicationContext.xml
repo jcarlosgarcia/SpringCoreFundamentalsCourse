@@ -9,15 +9,25 @@
 
 	<context:component-scan base-package="blackbelt"/>
 	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="location" value="classpath:blackbelt/springf/config/my.properties" />
+	</bean>
+	
+	<bean id="bankService" class="blackbelt.springf.service.BankService">
+		<property name="payGateway" ref="gateway"/>
+	</bean>
+	
+	<bean id="gateway" class="${paygateway}"/>
+	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver" />
 		<property name="url" value="jdbc:postgresql://localhost" />
-		<property name="username" value="root" />
-		<property name="password" value="mypetname" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
 	</bean>
 	
 	<bean id="euDateFormat" class="java.text.SimpleDateFormat">
-    	<constructor-arg value="dd/MM/yyyy" />
+    	<constructor-arg value="${dateformat}" />
 	</bean>
 	
 </beans>

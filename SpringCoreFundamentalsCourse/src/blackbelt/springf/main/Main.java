@@ -24,7 +24,7 @@ public class Main {
 		
 		BasicDataSource ds = (BasicDataSource)ac.getBean("dataSource");
 		
-		System.out.println(ds.getDriverClassName() + " - " + ds.getUrl());
+		System.out.println(ds.getDriverClassName() + " - " + ds.getUrl() + " - " + ds.getUsername() + " - " + ds.getPassword());
 		
 	}
 
