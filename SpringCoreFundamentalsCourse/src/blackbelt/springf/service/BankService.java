@@ -1,14 +1,19 @@
 package blackbelt.springf.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
-//@Component
+@Service
 public class BankService {
 	
 	@Autowired
 	private RateExchangeGateway reGateway;
+	
+	@Value("#{myProperties.interestRate}")
 	private double interestRate;
+	
+	@Autowired
 	private PayGateway payGateway;
 	
 	public RateExchangeGateway getGateway() {
